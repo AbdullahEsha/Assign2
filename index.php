@@ -4,16 +4,9 @@
 </head>
 
 <body>
-	<div class="header">
-		<h1> What is MP3 ? </h1>
-		<p> Created by Swinburne University Students </p>
-	</div>
-	<div class="navbar">
-		<a href="index.php">Index</a>
-		<a href="topic.php">Topic</a>
-		<a href="quiz.php">Quiz</a>
-		<a href="enhancements1.php">Enhancements </a>
-	</div>
+	<?php include "header.inc"; ?>
+	<?php include "menu.inc"; ?>
+
 	<div class="row">
 		<div class="side">
 			<h2> MP3 </h2>
@@ -100,9 +93,7 @@
 					current and future status of MP3, similar technologies to MP3 and comparison between MP3 & MP4 </li>
 			</p1>
 
-			<div class="footer">
-				<p> Contact me at <a href="mailto:jlai@swin.edu.au">jlai@swin.edu.au</a></p>
-			</div>
+			<?php include "footer.inc"; ?>
 
 </body>
 
