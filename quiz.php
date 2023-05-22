@@ -8,13 +8,7 @@
 
 <body>
 	<h1>MP3 and MP4 Quiz</h1>
-
-	<div class="navbar">
-		<a href="index.html">Index</a>
-		<a href="topic.html">Topic</a>
-		<a href="quiz.html">Quiz</a>
-		<a href="enhancements.html"> Enhancements</a>
-	</div>
+	<?php include "menu.inc"; ?>
 	<form>
 		<fieldset>
 			<legend>Student Details</legend>
@@ -121,9 +115,7 @@
 
 	</form>
 
-	<div class="footer">
-		<p> Contact me at <a href="mailto:jlai@swin.edu.au">jlai@swin.edu.au</a></p>
-	</div>
+	<?php include "footer.inc"; ?>
 </body>
 
 </html>
