@@ -1,0 +1,163 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background: linear-gradient(to right, #16ac5f, #1e90ff, #d4c8d4);
+  background-size: 200% 200%;
+  animation: backgroundAnimation 10s ease infinite;
+}
+
+@keyframes backgroundAnimation {
+  0% {
+    background-position: 0% 70%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 70%;
+  }
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: rgb(224, 231, 166);
+  animation-name: shadowAnimation;
+  animation-duration: 5s;
+  animation-fill-mode: both;
+}
+
+@keyframes shadowAnimation {
+  0% {
+    text-shadow: 20px 20px 0 rgba(200, 15, 15, 0.526);
+  }
+  50% {
+    text-shadow: -20px -20px 0 rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    text-shadow: 2px 2px 0 rgba(10, 112, 221, 0.5);
+  }
+}
+
+@keyframes h3 {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+h3 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: rgba(20, 13, 236, 0.774);
+  animation-name: h3;
+  animation-duration: 3s;
+  animation-fill-mode: both;
+}
+
+/* Define the animation */
+@keyframes labelAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply the animation to the label */
+label {
+  text-align: center;
+  margin-bottom: 20px;
+  color: rgba(240, 13, 13, 0.774);
+  animation-name: labelAnimation;
+  animation-duration: 5s;
+  animation-fill-mode: both;
+}
+
+input[type='radio'] {
+  margin-right: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+input[type='submit'] {
+  background-color: #4caf50;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  animation-name: button-color;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+input[type='submit']:hover {
+  animation-name: none;
+  background-color: #3e8e41;
+}
+
+@keyframes slideInDown {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+@keyframes button-color {
+  from {
+    background-color: #4caf50;
+  }
+  to {
+    background-color: #c0240c;
+  }
+}
+
+.footer {
+  padding: 20px;
+  font-family: italic;
+  text-align: center;
+  background: #0072b5;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #000066;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+.navbar a.right {
+  float: right;
+}
+
+.navbar a:hover {
+  background-color: white;
+  color: black;
+}

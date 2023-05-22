@@ -1,0 +1,60 @@
+body {
+  font-family: Arial, sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #92a8d1;
+}
+h1,
+h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+input[type='radio'] {
+  margin-right: 10px;
+}
+input[type='submit'] {
+  background-color: #4caf50;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+}
+input[type='submit']:hover {
+  background-color: #3e8e41;
+}
+
+.footer {
+  padding: 20px;
+  font-family: italic;
+  text-align: center;
+  background: #0072b5;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #000066;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+.navbar a.right {
+  float: right;
+}
+
+.navbar a:hover {
+  background-color: white;
+  color: black;
+}

@@ -1,0 +1,73 @@
+/*
+filename: [amila]
+author: [amila]
+created: [enter date]
+last modified: [enter date]
+description: [html files it refers to (if known)]
+*/
+
+h1 {
+  font-family: Verdana;
+  font-size: 3em;
+  color: purple;
+  font-weight: bold;
+  text-align: center;
+}
+h1,
+h2,
+h3 {
+  text-decoration: underline;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #add8e6;
+}
+tbody {
+  background-color: #90ee90;
+}
+aside {
+  width: 30%;
+  float: right;
+  margin: 15px;
+  padding: 10px;
+  border: 2px solid #333;
+}
+
+.footer {
+  padding: 20px;
+  font-family: italic;
+  text-align: center;
+  background: #0072b5;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #000066;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+.navbar a.right {
+  float: right;
+}
+
+.navbar a:hover {
+  background-color: white;
+  color: black;
+}
+
+img {
+  border: 5px solid #ccc;
+}
