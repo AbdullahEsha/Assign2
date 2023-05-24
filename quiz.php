@@ -1,3 +1,23 @@
+<?php
+    if (isset($_GET['error'])) {
+        if ($_GET['error'] == 'null_value') {
+            echo "Username/Password field can't left empty...";
+        }
+
+        if ($_GET['error'] == 'invalid_user') {
+            echo "Invalid username or Password";
+        }
+
+        if ($_GET['error'] == 'invalid_request') {
+            echo "You have to login first...";
+        }
+    } elseif (isset($_GET['success'])) {
+        if ($_GET['success'] == 'registration_done') {
+            echo "Registration Done! Now you can login...";
+        }
+    }
+    ?>
+
 <!DOCTYPE html>
 <html>
 
@@ -9,17 +29,19 @@
 <body>
 	<h1>MP3 and MP4 Quiz</h1>
 	<?php include "menu.inc"; ?>
-	<form>
+	<form action="./php/quizCheck.php" method="post">
 		<fieldset>
 			<legend>Student Details</legend>
 			<p><label for="sid"> Student ID</label>
 				<input type="text" name="sid" id="sid" size="10" pattern="\d{7,10}" required="required" />
 			</p>
-			<p><label for="gname"> Given Name</label>
-				<input type="text" name="gname" id="gname" maxlength="15" pattern="^[a-zA-Z\s]+$" size="15"
+			<p><label for="gname"> First Name</label>
+				<input type="text" name="firstname" id="gname" maxlength="15" pattern="^[a-zA-Z\s]+$" size="15"
 					required="required" />
-				<label for="fname"> Family Name</label>
-				<input type="text" name="fname" id="fname" maxlength="15" pattern="^[a-zA-Z\s]+$" size="15"
+			</p>
+			<p>
+				<label for="fname"> Last Name</label>
+				<input type="text" name="lastname" id="fname" maxlength="15" pattern="^[a-zA-Z\s]+$" size="15"
 					required="required" />
 			</p>
 		</fieldset>
@@ -109,10 +131,6 @@
 
 		<input type="submit" value="Submit" />
 		<input type="reset" value="Reset" />
-
-
-
-
 	</form>
 
 	<?php include "footer.inc"; ?>
