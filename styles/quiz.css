@@ -27,7 +27,24 @@ input[type='submit'] {
 input[type='submit']:hover {
   background-color: #3e8e41;
 }
-
+input[type='reset'] {
+  background-color: #eb1d16;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 5px;
+  animation-name: button-color;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+input[type='reset']:hover {
+  animation-name: none;
+  background-color: #b81510;
+}
 .footer {
   padding: 20px;
   font-family: italic;

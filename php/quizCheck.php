@@ -1,6 +1,5 @@
 <?php
-session_start();
-require_once('../php/session_header.php');
+$count = 0;
 require_once('../db/db.php');
 
 function validate($user)
@@ -14,14 +13,29 @@ function validate($user)
     $sql = "select * from student where id='{$user['sid']}' and firstname='{$user['firstname']}' and lastname='{$user['lastname']}'";
     $result = mysqli_query($conn, $sql);
     $user = mysqli_fetch_assoc($result);
+    $count = count($user);
 
-    if (count($user) > 0) {
+    if (2 > count($user) && count($user)> 0) {
         return true;
     } else {
         return false;
     }
 }
 
+function uploadQuiz($quiz)
+{
+    $conn = dbConnection();
+    if (!$conn) {
+        echo "DB connection error";
+    }
+
+    $sql = "insert into attempts values('', '{$quiz['attemptDate']}','{$quiz['firstName']}', '{$quiz['lastName']}', '{$quiz['attemptNo']}', '{$quiz['score']}')";
+    if (mysqli_query($conn, $sql)) {
+        return true;
+    } else {
+        return false;
+    }
+}
 
 
 if (isset($_POST['submit'])) {
@@ -31,7 +45,7 @@ if (isset($_POST['submit'])) {
 
 
     if (empty($sid) || empty($firstname) || empty($lastname)) {
-        header('location: index.php?error=null_value');
+        header('location: index.php');
     } else {
         $user = [
             'sid'=>$sid,
@@ -40,21 +54,58 @@ if (isset($_POST['submit'])) {
         ];
             
         $status = validate($user);
-                
+        
+        $scoreAll = 0;
+        if ($_POST['mp3-name'] === "Ernst Eberlein") {
+            $scoreAll =  $scoreAll + 2;
+        }
+        if ($_POST['mp3-year'] === "Ernst Eberlein") {
+            $scoreAll =  $scoreAll + 2;
+        }
+        if ($_POST['mp3-advantage'] === "Ernst Eberlein") {
+            $scoreAll =  $scoreAll + 2;
+        }
+        if ($_POST['mp3-reason'] === "Ernst Eberlein") {
+            $scoreAll =  $scoreAll + 2;
+        }
+        if ($_POST['mp3-content'] === "Ernst Eberlein") {
+            $scoreAll =  $scoreAll + 2;
+        }
+        if ($_POST['mp4-year'] === "Ernst Eberlein") {
+            $scoreAll =  $scoreAll + 2;
+        }
+        if ($_POST['mp4-content'] === "Ernst Eberlein") {
+            $scoreAll =  $scoreAll + 2;
+        }
+        if ($_POST['mp4-compressed'] === "Ernst Eberlein") {
+            $scoreAll =  $scoreAll + 2;
+        }
+        if ($_POST['mp3-support'] === "Ernst Eberlein") {
+            $scoreAll =  $scoreAll + 2;
+        }
+        if ($_POST['category'] === "Ernst Eberlein") {
+            $scoreAll =  $scoreAll + 2;
+        }
 
         if ($status) {
-            $_SESSION['username'] = $username;
-            // id	attemptDate	firstName	lastName	noStudent	noAttemptno	score
-            $sid = $_POST['mp3-name'];
-            $firstname = $_POST['mp3-year'];
-            $lastname = $_POST['mp3-advantage'];
-            $lastname = $_POST['mp3-reason'];
-            $lastname = $_POST['mp3-mp4'];
-            $lastname = $_POST['mp3-advantage'];
-            $lastname = $_POST['mp3-advantage'];
-            $lastname = $_POST['mp3-advantage'];
+            $quiz = [
+                'sid'=>$sid,
+                'firstname'=>$firstname,
+                'lastname'=>$lastname,
+                'attemptDate'=>date("Y/m/d"),
+                'noAttemptno'=>$count,
+                'score'=>$scoreAll,
+            ];
+            
+
+            $statusquiz = uploadQuiz($quiz);
+            if ($statusquiz) {
+                header('location: ./manage.php');
+            } else {
+                header('location: ./index.php');
+            }
         } else {
-            header('location: ../views/login.php?error=invalid_user');
+            header('location: index.php?error=failed!');
         }
     }
 }
