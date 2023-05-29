@@ -56,35 +56,55 @@ if (isset($_POST['submit'])) {
         $status = validate($user);
         
         $scoreAll = 0;
-        if ($_POST['mp3-name'] === "Ernst Eberlein") {
+        if ($_POST['mp3-name'] === "Ernst Eberlein" && $count === 1) {
             $scoreAll =  $scoreAll + 2;
+        } else {
+            $scoreAll =  $scoreAll + 1;
         }
-        if ($_POST['mp3-year'] === "Ernst Eberlein") {
+        if ($_POST['mp3-year'] === "Ernst Eberlein" && $count === 1) {
             $scoreAll =  $scoreAll + 2;
+        } else {
+            $scoreAll =  $scoreAll + 1;
         }
-        if ($_POST['mp3-advantage'] === "Ernst Eberlein") {
+        if ($_POST['mp3-advantage'] === "Ernst Eberlein" && $count === 1) {
             $scoreAll =  $scoreAll + 2;
+        } else {
+            $scoreAll =  $scoreAll + 1;
         }
-        if ($_POST['mp3-reason'] === "Ernst Eberlein") {
+        if ($_POST['mp3-reason'] === "Ernst Eberlein" && $count === 1) {
             $scoreAll =  $scoreAll + 2;
+        } else {
+            $scoreAll =  $scoreAll + 1;
         }
-        if ($_POST['mp3-content'] === "Ernst Eberlein") {
+        if ($_POST['mp3-content'] === "Ernst Eberlein" && $count === 1) {
             $scoreAll =  $scoreAll + 2;
+        } else {
+            $scoreAll =  $scoreAll + 1;
         }
-        if ($_POST['mp4-year'] === "Ernst Eberlein") {
+        if ($_POST['mp4-year'] === "Ernst Eberlein" && $count === 1) {
             $scoreAll =  $scoreAll + 2;
+        } else {
+            $scoreAll =  $scoreAll + 1;
         }
-        if ($_POST['mp4-content'] === "Ernst Eberlein") {
+        if ($_POST['mp4-content'] === "Ernst Eberlein" && $count === 1) {
             $scoreAll =  $scoreAll + 2;
+        } else {
+            $scoreAll =  $scoreAll + 1;
         }
-        if ($_POST['mp4-compressed'] === "Ernst Eberlein") {
+        if ($_POST['mp4-compressed'] === "Ernst Eberlein" && $count === 1) {
             $scoreAll =  $scoreAll + 2;
+        } else {
+            $scoreAll =  $scoreAll + 1;
         }
-        if ($_POST['mp3-support'] === "Ernst Eberlein") {
+        if ($_POST['mp3-support'] === "Ernst Eberlein" && $count === 1) {
             $scoreAll =  $scoreAll + 2;
+        } else {
+            $scoreAll =  $scoreAll + 1;
         }
-        if ($_POST['category'] === "Ernst Eberlein") {
+        if ($_POST['category'] === "Ernst Eberlein" && $count === 1) {
             $scoreAll =  $scoreAll + 2;
+        } else {
+            $scoreAll =  $scoreAll + 1;
         }
 
         if ($status) {
@@ -100,7 +120,7 @@ if (isset($_POST['submit'])) {
 
             $statusquiz = uploadQuiz($quiz);
             if ($statusquiz) {
-                header('location: ./manage.php');
+                header('location: ./markquiz.php');
             } else {
                 header('location: ./index.php');
             }
