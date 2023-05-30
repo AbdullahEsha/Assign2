@@ -1,5 +1,5 @@
 <?php
-    require_once('/php/populatedata.php');
+    require_once('./php/populatedata.php');
 
     if (isset($_GET['id'])) {
         $quizById = getQuizByID($_GET['id']);
@@ -20,7 +20,7 @@
 <body>
     <h1>MP3 and MP4 Quiz</h1>
     <?php include "menu.inc"; ?>
-    <form action="/php/populatedata.php" method="post">
+    <form action="./php/populatedata.php" method="post">
         <fieldset>
             <legend>Edit Quiz</legend>
             <table>

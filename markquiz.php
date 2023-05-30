@@ -1,5 +1,5 @@
 <?php
-    require_once('/php/populatedata.php');
+    require_once('./php/populatedata.php');
     ?>
 
 <!DOCTYPE html>

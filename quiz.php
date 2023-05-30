@@ -96,21 +96,21 @@
 		<label><input type="radio" name="mp3-support" value="Yes" required="required"> Yes</label><br>
 		<label><input type="radio" name="mp3-support" value="No" required="required"> No</label><br>
 		<h3>11. Mark the names who are involved in invented and developed MP3?</h3>
-		<input type="checkbox" id="Karlheinz" name="category[]" value="Karlheinz" checked="checked" />
+		<input type="checkbox" id="Karlheinz" name="category_1" value="Karlheinz" checked="checked" />
 		<label for="Karlheinz">Karlheinz Brandenburg</label>
-		<input type="checkbox" id="Ernst" name="category[]" value="Ernst" />
+		<input type="checkbox" id="Ernst" name="category_2" value="Ernst" />
 		<label for="Ernst">Ernst Eberlein</label>
-		<input type="checkbox" id="Grill" name="category[]" value="Grill" />
+		<input type="checkbox" id="Grill" name="category_3" value="Grill" />
 		<label for="Grill">Bernhard Grill</label>
-		<input type="checkbox" id="Galileo" name="category[]" value="Galileo" />
+		<input type="checkbox" id="Galileo" name="category_4" value="Galileo" />
 		<label for="Galileo">Galileo Galilei</label>
 		</p>
 		<h3><label for="comments">Description of Issues you think on MP3 & MP4?</label></h3>
 		<p><textarea id="comments" name="comments" rows="4" cols="40"
 				placeholder="Write description of your problem here . . "></textarea></p>
 
-		<input type="submit" value="Submit" />
-		<input type="reset" value="Reset" />
+		<input type="submit" value="Submit" name="submit"/>
+		<input type="reset" value="Reset" name="reset"/>
 	</form>
 
 	<?php include "footer.inc"; ?>

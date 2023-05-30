@@ -1,5 +1,4 @@
 <?php
-$count = 0;
 require_once('../db/db.php');
 
 function validate($user)
@@ -10,26 +9,28 @@ function validate($user)
         echo "DB connection error";
     }
                 
-    $sql = "select * from student where id='{$user['sid']}' and firstname='{$user['firstname']}' and lastname='{$user['lastname']}'";
+    $sql = "select * from attempts where sid='{$user['sid']}' and firstname='{$user['firstname']}' and lastname='{$user['lastname']}'";
     $result = mysqli_query($conn, $sql);
     $user = mysqli_fetch_assoc($result);
-    $count = count($user);
 
-    if (2 > count($user) && count($user)> 0) {
-        return true;
-    } else {
-        return false;
-    }
+    
+    if(gettype($user) === NULL) {
+        if(count($user)>-1) {
+            return count($user);
+        } else {
+            return count($user);
+        }
+    }else return 1;
 }
 
-function uploadQuiz($quiz)
+function uploadQuiz($sid, $attemptDate, $firstname, $lastname, $attemptNo, $score)
 {
     $conn = dbConnection();
     if (!$conn) {
         echo "DB connection error";
     }
-
-    $sql = "insert into attempts values('', '{$quiz['attemptDate']}','{$quiz['firstName']}', '{$quiz['lastName']}', '{$quiz['attemptNo']}', '{$quiz['score']}')";
+    
+    $sql = "INSERT INTO `attempts` VALUES ('','$sid','$attemptDate', '$firstname', '$lastname', '$attemptNo', '$score')";
     if (mysqli_query($conn, $sql)) {
         return true;
     } else {
@@ -42,8 +43,7 @@ if (isset($_POST['submit'])) {
     $sid = $_POST['sid'];
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
-
-
+ 
     if (empty($sid) || empty($firstname) || empty($lastname)) {
         header('location: index.php');
     } else {
@@ -56,76 +56,82 @@ if (isset($_POST['submit'])) {
         $status = validate($user);
         
         $scoreAll = 0;
-        if ($_POST['mp3-name'] === "Ernst Eberlein" && $count === 1) {
+        if ($_POST['mp3-name'] === "Karlheinz Brandenburg" && $status === 1) {
             $scoreAll =  $scoreAll + 2;
-        } else {
+        } 
+        if($_POST['mp3-name'] === "Karlheinz Brandenburg" && $status === 2){
             $scoreAll =  $scoreAll + 1;
         }
-        if ($_POST['mp3-year'] === "Ernst Eberlein" && $count === 1) {
+        if ($_POST['mp3-year'] === "1991" && $status === 1) {
             $scoreAll =  $scoreAll + 2;
-        } else {
+        } 
+        if($_POST['mp3-year'] === "1991" && $status === 2){
             $scoreAll =  $scoreAll + 1;
         }
-        if ($_POST['mp3-advantage'] === "Ernst Eberlein" && $count === 1) {
+        if ($_POST['mp3-advantage'] === "Lower file size and easier transmission over networks" && $status === 1) {
             $scoreAll =  $scoreAll + 2;
-        } else {
+        } 
+        if($_POST['mp3-advantage'] === "Lower file size and easier transmission over networks" && $status === 2){
             $scoreAll =  $scoreAll + 1;
         }
-        if ($_POST['mp3-reason'] === "Ernst Eberlein" && $count === 1) {
+        if ($_POST['mp3-reason'] === "To provide a high-quality, low-bitrate copy of a sound file" && $status === 1) {
             $scoreAll =  $scoreAll + 2;
-        } else {
+        } 
+         if($_POST['mp3-reason'] === "To provide a high-quality, low-bitrate copy of a sound file" && $status === 2){
             $scoreAll =  $scoreAll + 1;
         }
-        if ($_POST['mp3-content'] === "Ernst Eberlein" && $count === 1) {
+        if ($_POST['mp3-mp4'] === "MP3 is a digital multimedia format that can store video, audio, subtitles, and other media files, while MP4 is a format for storage and audio coding" && $status === 1) {
             $scoreAll =  $scoreAll + 2;
-        } else {
+        } 
+         if($_POST['mp3-mp4'] === "MP3 is a digital multimedia format that can store video, audio, subtitles, and other media files, while MP4 is a format for storage and audio coding" && $status === 2){
             $scoreAll =  $scoreAll + 1;
         }
-        if ($_POST['mp4-year'] === "Ernst Eberlein" && $count === 1) {
+        if ($_POST['mp3-content'] === "No" && $status === 1) {
             $scoreAll =  $scoreAll + 2;
-        } else {
+        } 
+         if($_POST['mp3-content'] === "No" && $status === 2){
             $scoreAll =  $scoreAll + 1;
         }
-        if ($_POST['mp4-content'] === "Ernst Eberlein" && $count === 1) {
+        if ($_POST['mp4-year'] === "1999" && $status === 1) {
             $scoreAll =  $scoreAll + 2;
-        } else {
+        } 
+        if($_POST['mp4-year'] === "1999" && $status === 2){
             $scoreAll =  $scoreAll + 1;
         }
-        if ($_POST['mp4-compressed'] === "Ernst Eberlein" && $count === 1) {
+        if ($_POST['mp4-content'] === "Video, audio, images, and text" && $status === 1) {
             $scoreAll =  $scoreAll + 2;
-        } else {
+        } 
+         if($_POST['mp4-content'] === "Video, audio, images, and text" && $status === 2){
             $scoreAll =  $scoreAll + 1;
         }
-        if ($_POST['mp3-support'] === "Ernst Eberlein" && $count === 1) {
+        if ($_POST['mp4-compressed'] === "Yes" && $status === 1) {
             $scoreAll =  $scoreAll + 2;
-        } else {
+        } 
+         if($_POST['mp4-compressed'] === "Yes" && $status === 2){
             $scoreAll =  $scoreAll + 1;
         }
-        if ($_POST['category'] === "Ernst Eberlein" && $count === 1) {
+        if ($_POST['mp3-support'] === "Yes" && $status === 1) {
             $scoreAll =  $scoreAll + 2;
-        } else {
+        } 
+         if($_POST['mp3-support'] === "Yes" && $status === 2){
             $scoreAll =  $scoreAll + 1;
         }
-
-        if ($status) {
-            $quiz = [
-                'sid'=>$sid,
-                'firstname'=>$firstname,
-                'lastname'=>$lastname,
-                'attemptDate'=>date("Y/m/d"),
-                'noAttemptno'=>$count,
-                'score'=>$scoreAll,
-            ];
-            
-
-            $statusquiz = uploadQuiz($quiz);
+        if ($_POST['category_1'] === true && $_POST['category_2'] === true && $_POST['category_3'] === true && $status === 1) {
+            $scoreAll =  $scoreAll + 2;
+        } 
+        if($_POST['category_1'] === true && $_POST['category_2'] === true && $_POST['category_3'] === true && $status === 2){
+            $scoreAll =  $scoreAll + 1;
+        }
+       
+        if ($status<2) { 
+            $statusquiz = uploadQuiz($sid, date("Y-m-d"), $firstname, $lastname, $status, $scoreAll);
             if ($statusquiz) {
-                header('location: ./markquiz.php');
+                header('location: ../markquiz.php');
             } else {
                 header('location: ./index.php');
             }
         } else {
-            header('location: index.php?error=failed!');
+            header('location: ../index.php?error=failed');
         }
     }
 }
