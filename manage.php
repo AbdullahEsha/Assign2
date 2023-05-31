@@ -20,7 +20,7 @@
 <body>
     <h1>MP3 and MP4 Quiz</h1>
     <?php include "menu.inc"; ?>
-    <form action="./php/populatedata.php" method="post">
+    <form action="./php/quizCheck.php" method="post">
         <fieldset>
             <legend>Edit Quiz</legend>
             <table>
@@ -35,7 +35,7 @@
                     <td>
                         <input type="hidden" name="id"
                             value="<?=$quizById['id']?>">
-                        <input type="submit" name="edit" value="Update">
+                        <input type="submit" name="update" value="Update">
                         <a href="markquiz.php">Back</a>
                     </td>
                 </tr>

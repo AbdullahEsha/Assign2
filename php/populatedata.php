@@ -52,7 +52,7 @@ function updateScore($quizupdate)
 }
 
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['edit'])) {
     $score 	= $_POST['score'];
     $id 	= $_POST['id'];
 
@@ -64,7 +64,7 @@ if (isset($_POST['submit'])) {
             'id'=> $id
         ];
 
-        $status = update($quizupdate);
+        $status = updateScore($quizupdate);
 
         if ($status) {
             header('location: index.php?success=done');

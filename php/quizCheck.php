@@ -38,6 +38,22 @@ function uploadQuiz($sid, $attemptDate, $firstname, $lastname, $attemptNo, $scor
     }
 }
 
+function updateScore($quizupdate)
+{
+    $conn = dbConnection();
+    if (!$conn) {
+        echo "DB connection error";
+    }
+
+    $sql = "update attempts set score='{$quizupdate['score']}' where id={$quizupdate['id']}";
+
+    if (mysqli_query($conn, $sql)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 if (isset($_POST['submit'])) {
     $sid = $_POST['sid'];
@@ -132,6 +148,32 @@ if (isset($_POST['submit'])) {
             }
         } else {
             header('location: ../index.php?error=failed');
+        }
+    }
+}
+
+
+if (isset($_POST['update'])) {
+    $score 	= $_POST['score'];
+    $id 	= $_POST['id'];
+
+    var_dump($score);
+    var_dump($id);
+
+    if (empty($score) || empty($id)) {
+        header('location: ../php/quizCheck.php');
+    } else {
+        $quizupdate = [
+            'score'=> $score,
+            'id'=> $id
+        ];
+
+        $status = updateScore($quizupdate);
+
+        if ($status) {
+            header('location: ../markquiz.php?success=done');
+        } else {
+            header('location: manage.php?id={$id}');
         }
     }
 }
