@@ -31,6 +31,7 @@
     <?php include "menu.inc"; ?>
     <table>
         <tr>
+            <th>Student ID</th>
             <th>Firstname</th>
             <th>Lastname</th>
             <th>Attempt Date</th>
@@ -42,6 +43,7 @@
             $quiz = getAllQuizData();
     for ($i=0; $i != count($quiz); $i++) {  ?>
         <tr>
+            <th><?=$quiz[$i]['sid']?></th>
             <th><?=$quiz[$i]['firstName']?></th>
             <th><?=$quiz[$i]['lastName']?></th>
             <th><?=$quiz[$i]['attemptDate']?>
